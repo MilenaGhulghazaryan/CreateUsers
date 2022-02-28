@@ -1,0 +1,18 @@
+.addbtn{
+   
+   margin-left: 326px;
+  
+   background-color: rgb(37, 56, 228); 
+   border: none;
+   color: white;
+   padding: 7px 20px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+ 
+   border-radius: 5px;
+}
+a.addbtn:hover{
+    color:black;
+}
