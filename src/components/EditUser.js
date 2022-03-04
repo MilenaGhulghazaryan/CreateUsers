@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { GlobalContext } from "../context/GlobalState";
 import { Link, useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+
 import {
   Form,
   FormGroup,
@@ -15,14 +15,20 @@ export const EditUser = (props) => {
   
   const [selectedUser, setSelectedUser] = useState({
     id: '',
-    name: ''
+    name: '',
+    
   })
-  const navigate = useNavigate();
+  
+
   const currentUserId = props.match.params.id;
+  const navigate = useNavigate();
+  
+ 
+  
 
   useEffect(() => {
     const userId = currentUserId;
-    const selectedUser = users.find(user => user.id === userId);
+    const selectedUser = users.find(user => user.id === Number(userId));
     setSelectedUser(selectedUser);
   }, [currentUserId, users])
 
@@ -40,10 +46,11 @@ export const EditUser = (props) => {
     <Form onSubmit={onSubmit}>
       <FormGroup>
         <Label>Name</Label>
-        <Input type="text" value={selectedUser.name} onChange={onChange} name="name" placeholder="Enter user" required></Input>
+        <Input type="text" name="name" value={selectedUser.name} onChange={onChange}  placeholder="Enter user" required></Input>
       </FormGroup>
       <Button type="submit" >Edit Name</Button>
       <Link to="/" className="btn btn-danger ml-2">Cancel</Link>
     </Form>
   )
 }
+
